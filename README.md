@@ -1,4 +1,4 @@
-#do
+#for xd20.txt & xd30.txt
 
 $txt = $php
 
