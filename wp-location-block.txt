@@ -1,0 +1,53 @@
+
+
+// Function to get state from IP address
+function getStateFromIP($ip) {
+    // Make sure to replace 'your_api_key' with your actual API key
+    $api_url = "http://ip-api.com/json/$ip?fields=regionName";
+    
+    // Initialize cURL session
+    $ch = curl_init();
+    
+    // Set cURL options
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    
+    // Execute cURL session
+    $response = curl_exec($ch);
+    
+    // Close cURL session
+    curl_close($ch);
+    
+    // Decode JSON response
+    $data = json_decode($response, true);
+    
+    // Check if state is present in response
+    if(isset($data['regionName'])) {
+        return $data['regionName'];
+    } else {
+        return "Unknown"; // Return "Unknown" if state is not found
+    }
+}
+
+// Check visitor's state and redirect if necessary
+function check_visitor_state() {
+    // Get user's IP address
+    $user_ip = $_SERVER['REMOTE_ADDR'];
+    
+    // Get state from user's IP
+    $state = getStateFromIP($user_ip);
+    
+    // Debug statement
+   // echo "Detected state: $state";
+    
+    // Check if the state is Gujarat, Haryana, or Delhi
+    if (in_array($state, array('Punjab','Himachal Pradesh','Jammu and Kashmir', 'Haryana', 'Delhi'))) {
+        // Debug statement
+        //echo "Redirecting...";
+        
+        // Redirect to 500.php (Replace with your actual error page)
+        wp_redirect('/e/');
+        exit;
+    }
+}
+add_action('template_redirect', 'check_visitor_state');
